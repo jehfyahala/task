@@ -1,0 +1,42 @@
+﻿@model task.Models.Job
+
+@{
+    ViewData["Title"] = "Detalles de la tarea";
+}
+
+<h2>Detalles de la tarea</h2>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.JobDescription)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.JobStartDate)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.JobStartDate)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.JobFinalDate)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.JobFinalDate)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.State.StateDescription)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.State.StateDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.JobId">Editar</a>
+    <a asp-action="Index" class="btn btn-success">Regresar</a>
+</div>

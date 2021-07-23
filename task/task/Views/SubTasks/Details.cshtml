@@ -1,0 +1,29 @@
+﻿@model task.Models.SubTask
+
+@{
+    ViewData["Title"] = "Detalles de la subtarea";
+}
+
+<h2>Detalles de la Subtarea</h2>
+<div>
+   
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.SubTaskDescription)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.SubTaskDescription)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Job.JobDescription)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Job.JobDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.SubTaskId">Editar</a>
+    <a asp-action="Index" class="btn btn-success">Regresar</a>
+</div>

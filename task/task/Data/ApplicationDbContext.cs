@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using task.Models;
 
 namespace task.Data
 {
@@ -12,5 +13,9 @@ namespace task.Data
             : base(options)
         {
         }
+        //modificaciones
+        public DbSet<task.Models.State> State { get; set; }
+        public DbSet<task.Models.Job> Job { get; set; }
+        public DbSet<task.Models.SubTask> SubTask { get; set; }
     }
 }

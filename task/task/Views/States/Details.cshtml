@@ -1,0 +1,23 @@
+﻿@model task.Models.State
+
+@{
+    ViewData["Title"] = "Detalles del estado";
+}
+
+<h2>Detalles del estado</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.StateDescription)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.StateDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.StateId">Editar</a>
+    <a asp-action="Index" class="btn btn-success">Regresar</a>
+</div>

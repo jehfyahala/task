@@ -1,0 +1,48 @@
+﻿@model task.Models.Job
+
+@{
+    ViewData["Title"] = "Eliminar tarea";
+}
+
+<<h2>Eliminar tarea definitivamente</h2>
+<h3>Advertencia: antes de eliminar un estado deberá primero borrar la subtarea asignada</h3>
+<br>
+<h3>¿Esta completamente seguro de borrar este estado?</h3>
+<br>
+<h3>Tome en cuenta que esto podria afectar a los datos ya guardados...¿Continuar?</h3>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.JobDescription)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.JobStartDate)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.JobStartDate)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.JobFinalDate)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.JobFinalDate)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.State.StateDescription)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.State.StateDescription)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="JobId" />
+        <input type="submit" value="Borrar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-success">Regresar</a>
+    </form>
+</div>

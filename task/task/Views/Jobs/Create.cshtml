@@ -1,0 +1,45 @@
+﻿@model task.Models.Job
+
+@{
+    ViewData["Title"] = "Crear nueva tarea";
+}
+
+<h2>Nueva tarea</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="JobDescription" class="control-label"></label>
+                <input asp-for="JobDescription" class="form-control" />
+                <span asp-validation-for="JobDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobStartDate" class="control-label"></label>
+                <input asp-for="JobStartDate" class="form-control" />
+                <span asp-validation-for="JobStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobFinalDate" class="control-label"></label>
+                <input asp-for="JobFinalDate" class="form-control" />
+                <span asp-validation-for="JobFinalDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateId" class="control-label"></label>
+                <select asp-for="StateId" class ="form-control" asp-items="ViewBag.StateId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-warning">Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

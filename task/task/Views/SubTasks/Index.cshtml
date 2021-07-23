@@ -1,0 +1,120 @@
+﻿@model task.common.Pagination<SubTask>
+
+@{
+    ViewData["Title"] = "Menu de subtareas";
+}
+
+<h2>Asignación de subtareas a usar</h2>
+
+<div class="row search">
+    <div class="col-auto">
+        <input type="text" class="form-control-plaintext" id="txt-search" placeholder="Buscar..." />
+    </div>
+    <div class="col-auto">
+        <!-- capturar el valor de la caja de texto-->
+        <a class="btn btn-success" onclick="universal_search()" id="search-link"><i class="fas fa-search"></i></a>
+        <a asp-action="Create" class="btn btn-success"><i class="far fa-file"></i> Nuevo</a>
+    </div>
+
+</div>
+
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result.SingleOrDefault().SubTaskDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Result.SingleOrDefault().Job.JobDescription)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Result)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubTaskDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Job.JobDescription)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.SubTaskId"><i class="fas fa-edit"></i> Editar</a>
+                        <a asp-action="Details" class="btn btn-success" asp-route-id="@item.SubTaskId"><i class="far fa-file-alt"></i> Detalles</a>
+                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.SubTaskId"><i class="fas fa-trash-alt"></i> Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@*Codigo para paginar registros*@
+@if (Model.Result.Count() > 0)
+{
+    <span>
+        <strong>@Model.TotalRecords</strong> registros encontrados.
+    </span>
+    <span> | </span>
+    <span>
+        Pagina <strong>@Model.CurrentPage</strong> de
+        <strong>@Model.TotalPage</strong>
+    </span>
+    <span> | </span>
+}
+else
+{
+    <span>No hay resultados para esta busqueda</span>
+    <span> | </span>
+}
+
+@if (Model.CurrentPage > 1)
+{
+    @Html.ActionLink("<<", "Index", new { Page = 1, Search = Model.Search },
+        new { @class = "btn btn-sm brn-default" }
+    )
+
+    <span></span>
+    @Html.ActionLink("Anterior", "Index", new { Page = Model.CurrentPage - 1, Search = Model.Search },
+        new { @class = "btn btn-sm brn-default" }
+    )
+
+}
+else
+{
+    @Html.ActionLink("<<", "Index", new { Page = 1, Search = Model.Search },
+        new { @class = "btn btn-sm brn-default disabled" }
+    )
+    <span></span>
+    @Html.ActionLink("Anterior", "Index", new { Page = 1, Search = Model.Search },
+        new { @class = "btn btn-sm brn-default disabled" }
+    )
+}
+
+<span></span>
+
+@if (Model.CurrentPage < Model.TotalPage)
+{
+    @Html.ActionLink("Siguiente", "Index", new { Page = Model.CurrentPage + 1, Search = Model.Search },
+        new { @class = "btn btn-sm brn-default" }
+    )
+    <span></span>
+    @Html.ActionLink(">>", "Index", new { Page = Model.TotalPage, Search = Model.Search },
+        new { @class = "btn btn-sm brn-default" }
+    )
+}
+else
+{
+    @Html.ActionLink("Siguiente", "Index", new { Page = Model.CurrentPage - 1, Search = Model.Search },
+       new { @class = "btn btn-sm brn-default disabled" }
+    )
+    <span></span>
+    @Html.ActionLink(">>", "Index", new { Page = Model.TotalPage, Search = Model.Search },
+        new { @class = "btn btn-sm brn-default disabled" }
+    )
+}
+<link rel="stylesheet" href="~/css/common.css" />
+<script src="~/js/universal.js" asp-append-version="true"></script>

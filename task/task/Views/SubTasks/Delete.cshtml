@@ -1,0 +1,34 @@
+﻿@model task.Models.SubTask
+
+@{
+    ViewData["Title"] = "Borrar Subtarea";
+}
+
+<h2>Eliminar subtarea definitivamente</h2>
+<h3>¿Esta completamente seguro de borrar esta subtarea?</h3>
+<br>
+<h3>Una vez borrada no podra recuperar los datos...¿Continuar?</h3>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.SubTaskDescription)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.SubTaskDescription)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Job.JobDescription)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Job.JobDescription)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="SubTaskId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-success">Regresar</a>
+    </form>
+</div>
