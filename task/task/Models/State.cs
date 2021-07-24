@@ -11,7 +11,7 @@ namespace task.Models
         [Key]
         public int StateId { get; set; }
 
-        [StringLength(30, ErrorMessage = "No debe de tener mas de 30 caracteres...")]
+        [StringLength(70, ErrorMessage = "No debe de tener mas de 70 caracteres...")]
         [Display(Name = "Descripcion de Estado")]
         [MinLength(3, ErrorMessage = "Debe de tener mas de tres caracteres...")]
         public string StateDescription { get; set; }

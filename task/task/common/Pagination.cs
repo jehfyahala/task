@@ -15,10 +15,10 @@ namespace task.common
         public int TotalPage { get; set; }
         
         public string Search { get; set; }
-
+        public IEnumerable<T> Result { get; set; }
         public string Tasks { get; set; }
         public List<T> State { get; set; }
-        public IEnumerable<T> Result { get; set; }
+        
 
         public static implicit operator Pagination<T>(Pagination<Job> v)
         {

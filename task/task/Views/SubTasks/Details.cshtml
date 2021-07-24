@@ -6,24 +6,24 @@
 
 <h2>Detalles de la Subtarea</h2>
 <div>
-   
+
     <hr />
     <dl class="row">
-        <dt class = "col-sm-4">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.SubTaskDescription)
         </dt>
-        <dd class = "col-sm-8">
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.SubTaskDescription)
         </dd>
-        <dt class = "col-sm-4">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.Job.JobDescription)
         </dt>
-        <dd class = "col-sm-8">
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.Job.JobDescription)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model.SubTaskId">Editar</a>
-    <a asp-action="Index" class="btn btn-success">Regresar</a>
+    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@Model.SubTaskId">Editar</a>
+    <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
 </div>
